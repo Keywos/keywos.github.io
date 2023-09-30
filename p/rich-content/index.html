@@ -44,14 +44,19 @@
     
     window.addEventListener('beforeunload', function (event) {
         try {
-            let timestamp = Date.now();
-            let loaclc = localStorage.getItem('timestamp')
-            if ( loaclc === null){
-                localStorage.setItem('timestamp', timestamp + 1000 * 60 * 60 * 12)
-            } 
+            let timestamp = Date.now(), xys = false;
+            let loaclc = localStorage.getItem('ColorTimestamp')
+
+            if (loaclc === null) {
+                localStorage.setItem('ColorTimestamp', timestamp + 1000 * 60 * 60 * 12)
+                xys = true;
+            }
             if (loaclc < timestamp) {
+                xys = true;
+            }
+            if (xys) {
                 localStorage.removeItem("StackColorScheme");
-            } 
+            }
 
         } catch (error) {
 
