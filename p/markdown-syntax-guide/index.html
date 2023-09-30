@@ -6,7 +6,7 @@
 
 <link rel='canonical' href='https://ikey.eu.org/p/markdown-syntax-guide/'>
 
-<link rel="stylesheet" href="/scss/style.min.deec22f796afd0b1d5d0422e367c12dd67c7f880eb20e89e7d36a4333b640ba3.css"><meta property='og:title' content='Markdown Syntax Guide'>
+<link rel="stylesheet" href="/scss/style.min.0cdfacd8fe388e4099b9ae7515628b7b97902c3b92c273562d3067f05058c5d4.css"><meta property='og:title' content='Markdown Syntax Guide'>
 <meta property='og:description' content='Sample article showcasing basic Markdown syntax and formatting for HTML elements.'>
 <meta property='og:url' content='https://ikey.eu.org/p/markdown-syntax-guide/'>
 <meta property='og:site_name' content='Key'>
@@ -43,21 +43,21 @@
     })();
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    window.addEventListener('beforeunload', function (event) {
+        try {
+            let timestamp = Date.now();
+            let loaclc = localStorage.getItem('timestamp')
+            if ( loaclc === null){
+                localStorage.setItem('timestamp', timestamp + 1000 * 60 * 60 * 12)
+            } 
+            if (loaclc < timestamp) {
+                localStorage.removeItem("StackColorScheme");
+            } 
 
-    
+        } catch (error) {
 
-    
-    
+        }
+    });
 </script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
     <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
         <span class="hamburger-box">
@@ -264,8 +264,11 @@
 
 
 
-                    <span>暗色模式</span>
+                    <span>深色模式</span>
                 </li>
+
+                
+
             
         </div>
     </ol>
@@ -762,9 +765,14 @@
         
             2020 - 
         
-        2023 Example Person
+        2023 ThenKey
     </section>
     
+    <section class="powerby" id="Deldark-mode-toggle">
+  
+        Click to Switch Auto DarkMode
+    </section>
+
     
 </footer>
 
