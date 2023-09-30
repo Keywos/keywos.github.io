@@ -8,6 +8,22 @@
         <language>zh-cn</language>
         <copyright>Example Person</copyright>
         <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ikey.eu.org/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>bug</title>
+        <link>https://ikey.eu.org/categories/bug/</link>
+        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://ikey.eu.org/categories/bug/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ffw</title>
+        <link>https://ikey.eu.org/categories/ffw/</link>
+        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://ikey.eu.org/categories/ffw/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Test</title>
         <link>https://ikey.eu.org/categories/test/</link>
         <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
@@ -40,19 +56,11 @@
         <description></description>
         </item>
         <item>
-        <title>تجربة</title>
-        <link>https://ikey.eu.org/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+        <title>themess</title>
+        <link>https://ikey.eu.org/categories/themess/</link>
+        <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
         
-        <guid>https://ikey.eu.org/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>تجربة مع فراغات</title>
-        <link>https://ikey.eu.org/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</link>
-        <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://ikey.eu.org/categories/%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9-%D9%85%D8%B9-%D9%81%D8%B1%D8%A7%D8%BA%D8%A7%D8%AA/</guid>
+        <guid>https://ikey.eu.org/categories/themess/</guid>
         <description></description>
         </item>
         
