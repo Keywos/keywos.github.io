@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
-    <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''>
-<title>搜索</title>
+    <head>
+	<meta name="generator" content="Hugo 0.119.0"><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Keys'>
+<title>ThenKey</title>
 
-<link rel='canonical' href='https://ikey.eu.org/search/'>
+<link rel='canonical' href='https://ikey.eu.org/'>
 
-<link rel="stylesheet" href="/scss/style.min.c5df5227f990b098fc84de88f2baebfe6ef24fd3fb74684ad891a36c439980e7.css"><meta property='og:title' content='搜索'>
-<meta property='og:description' content=''>
-<meta property='og:url' content='https://ikey.eu.org/search/'>
+<link rel="stylesheet" href="/scss/style.min.c5df5227f990b098fc84de88f2baebfe6ef24fd3fb74684ad891a36c439980e7.css"><meta property='og:title' content='ThenKey'>
+<meta property='og:description' content='Keys'>
+<meta property='og:url' content='https://ikey.eu.org/'>
 <meta property='og:site_name' content='ThenKey'>
-<meta property='og:type' content='article'><meta property='article:section' content='Page' />
-<meta name="twitter:title" content="搜索">
-<meta name="twitter:description" content=""><link rel="alternate" type="application/json" href="https://ikey.eu.org/search/index.json">
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2023-09-30T00:00:00&#43;00:00 '/>
+<meta name="twitter:title" content="ThenKey">
+<meta name="twitter:description" content="Keys"><link rel="alternate" type="application/rss&#43;xml" href="https://ikey.eu.org/index.xml">
     <link rel="shortcut icon" href="/favicon.ico" />
-<link rel="preload" href="/search/index.json" as="fetch" crossorigin="anonymous">
+
     </head>
-    <body class="template-search">
+    <body class="">
 <script>
     (function () {
         const colorSchemeKey = 'StackColorScheme';
@@ -150,7 +151,7 @@
         
         
         
-        <li >
+        <li  class='current' >
             <a href='/' >
                 
                 
@@ -209,7 +210,7 @@
         </li>
         
         
-        <li  class='current' >
+        <li >
             <a href='/search/' >
                 
                 
@@ -277,15 +278,16 @@
     </ol>
 </aside>
 
-            <main class="main full-width">
-<form action="/search/" class="search-form"data-json="/search/index.json">
-    <p>
+    <aside class="sidebar right-sidebar sticky">
         
-        <input name="keyword" placeholder="输入关键词..." />
-    </p>
-
-    <button title="搜索">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            
+            <input name="keyword" required placeholder="输入关键词..." />
+        
+            <button title="搜索">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="10" cy="10" r="7" />
   <line x1="21" y1="21" x2="15" y2="15" />
@@ -293,17 +295,215 @@
 
 
 
-    </button>
-</form>
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget archives">
+        
+        <h2 class="widget-title section-title">归档</h2>
 
-<div class="search-result">
-    <h3 class="search-result--title section-title"></h3>
-    <div class="search-result--list article-list--compact"></div>
+        
+        
+        
+        
+        
+        <div class="widget-archive--list">
+            <div class="archives-year">
+                    <a href="/archives/#2023">
+                        
+                            <span class="year">2023</span>
+                            <span class="count">2</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2022">
+                        
+                            <span class="year">2022</span>
+                            <span class="count">1</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2020">
+                        
+                            <span class="year">2020</span>
+                            <span class="count">1</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2019">
+                        
+                            <span class="year">2019</span>
+                            <span class="count">1</span>
+                        
+                    </a> 
+                </div>
+            <div class="archives-year">
+                    <a href="/archives/#2018">
+                        
+                            <span class="year">2018</span>
+                            <span class="count">1</span>
+                        
+                    </a> 
+                </div>
+            
+        </div>
+    </section>
+            
+        
+            
+                <section class="widget tagCloud">
+    
+    <h2 class="widget-title section-title">分类</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/bug/" class="font_size_1">
+                Bug
+            </a>
+        
+            <a href="/categories/test/" class="font_size_1">
+                Test
+            </a>
+        
+            <a href="/categories/themes/" class="font_size_1">
+                themes
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    
+    <h2 class="widget-title section-title">标签云</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/css/" class="font_size_1">
+                css
+            </a>
+        
+            <a href="/tags/html/" class="font_size_1">
+                html
+            </a>
+        
+            <a href="/tags/markdown/" class="font_size_1">
+                markdown
+            </a>
+        
+            <a href="/tags/privacy/" class="font_size_1">
+                privacy
+            </a>
+        
+            <a href="/tags/shortcodes/" class="font_size_1">
+                shortcodes
+            </a>
+        
+            <a href="/tags/themes/" class="font_size_1">
+                themes
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    
+    
+    
+    
+
+    <section class="article-list">
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/bilibili-test/">BiliBili test</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            How do you organize a space party?  You planet!
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 30, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 0 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
 </div>
 
-<script>
-    window.searchResultTitleTemplate = "#PAGES_COUNT 个结果 （用时 #TIME_SECONDS 秒）"
-</script><script type="text/javascript" src="/ts/search.js" defer></script>
+</header>
+</article>
+        
+    </section>
+    <nav class='pagination'>
+        
+        
+
+        
+            
+                    <a class='page-link' href='/'>1</a>
+                
+            
+            
+                <span class='page-link current'>2</span>
+                
+            
+    </nav>
 
 <footer class="site-footer">
     <section class="copyright">
@@ -319,7 +519,6 @@
 
     
 </footer>
-
 
             </main>
         </div>
