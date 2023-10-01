@@ -7,7 +7,222 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>ThenKey</copyright>
-        <lastBuildDate>Thu, 11 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ikey.eu.org/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://ikey.eu.org/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>站点图标：Safari 和 Favicon 的最佳实践</title>
+        <link>https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</link>
+        <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/</guid>
+        <description>&lt;img src="https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.jpg" alt="Featured image of post 站点图标：Safari 和 Favicon 的最佳实践" /&gt;&lt;h2 id=&#34;什么是-favicon&#34;&gt;什么是 favicon&lt;/h2&gt;
+&lt;p&gt;简单地讲就是浏览器标签页或收藏夹里显示的这些图标。&lt;/p&gt;
+&lt;p&gt;详细介绍看  &lt;a class=&#34;link&#34; href=&#34;https://baike.baidu.com/item/Favicon/3410211&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;百度百科&lt;/a&gt; 就好：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Favicon（即&amp;quot;Favorites Icon&amp;quot;的缩写）是一个小型的图标文件，通常以.ico格式存在，用于标识特定网站或网页。这个图标通常显示在网页浏览器标签页、收藏夹和书签栏等位置，以提供与网站相关的可视标识。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;怎样设置&#34;&gt;怎样设置&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;创建Favicon图标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用图形设计工具（如Adobe Photoshop、GIMP等）创建 Favicon 图标。&lt;/li&gt;
+&lt;li&gt;如果输出 &lt;code&gt;ico&lt;/code&gt; 格式，Macos Photoshop不能直接输出这种格式，需要使用插件 &lt;code&gt;ICOFormat&lt;/code&gt;, 尺寸为 32x32 或者 16x16.&lt;/li&gt;
+&lt;li&gt;也可以设计  &lt;code&gt;png&lt;/code&gt; &lt;code&gt;svg&lt;/code&gt; 以适应现代浏览器的需求，后者为矢量图拥有无损放大的能力，&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;上传 Favicon 文件到你的网站根目录：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在你的网站的HTML文件的 &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 部分添加:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;link rel=&amp;#34;icon&amp;#34; href=&amp;#34;/favicon.ico&amp;#34; type=&amp;#34;image/x-icon&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // 这是标准的Favicon链接，指向一个.ico格式的图标文件。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;link rel=&amp;#34;apple-touch-icon&amp;#34; href=&amp;#34;/apple-touch-icon.png&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // 这是用于iOS设备的Apple Touch图标链接。尺寸一般为 180x180
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;link rel=&amp;#34;icon&amp;#34; href=https://ikey.eu.org/favicon.svg&amp;#34; type=&amp;#34;image/svg+xml&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // 这是一个使用SVG格式的Favicon图标链接。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id=&#34;关于-macos-的-safari-的缓存问题&#34;&gt;关于 Macos 的 Safari 的缓存问题&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/touch_icon.png&#34;
+	width=&#34;458&#34;
+	height=&#34;339&#34;
+	srcset=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/touch_icon_huf9e240e25d17ff2f761e3afef50e230d_26024_480x0_resize_box_3.png 480w, https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/touch_icon_huf9e240e25d17ff2f761e3afef50e230d_26024_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;收藏夹 apple-touch-icon&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;135&#34;
+		data-flex-basis=&#34;324px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Safari 会根据网站的域名为键值进行缓存 网站的 favicon 和 apple-touch-icon 图标，这也就导致了如果某些网站更新了 ico 图标，而用户则无法获取最新的图标，但是 Macos 可以清除缓存重新下载方法如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先删除收藏页到图标并关闭标签页&lt;/li&gt;
+&lt;li&gt;打开访达 App 输入快捷键 &lt;kbd&gt;command&lt;/kbd&gt; + &lt;kbd&gt;shift&lt;/kbd&gt; + &lt;kbd&gt; G &lt;/kbd&gt; 输入 &lt;code&gt;～/Library/Safari&lt;/code&gt; 或  &lt;code&gt;/Users/用户名/Library/Safari&lt;/code&gt; 进入目录 在这里找到 如图所示的两个文件夹，这就是缓存他们的图标，清除掉，重启 Safari 就好了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache.png&#34;
+	width=&#34;946&#34;
+	height=&#34;589&#34;
+	srcset=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache_hu01db51e95cd32b2896a66d532c9b1a88_79618_480x0_resize_box_3.png 480w, https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache_hu01db51e95cd32b2896a66d532c9b1a88_79618_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;清理这两个文件夹&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;160&#34;
+		data-flex-basis=&#34;385px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache-re.png&#34;
+	width=&#34;880&#34;
+	height=&#34;596&#34;
+	srcset=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache-re_hubbcd73385afceb7d419ef87796f3b11b_58830_480x0_resize_box_3.png 480w, https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache-re_hubbcd73385afceb7d419ef87796f3b11b_58830_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;重启 Safari 并重新访问网站添加后&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;147&#34;
+		data-flex-basis=&#34;354px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;iOS Safari 的 favicon 图标 清理掉十分困难，改时间，设置内清除浏览记录都不行，重度强迫症表示很难接受。
+&lt;ul&gt;
+&lt;li&gt;除非 &lt;code&gt;重置系统或者刷机&lt;/code&gt; 才能清理掉这个缓存，或许某些 iOS 的缓存也是类似这种持久缓存，没用设置过期时间？或者bug？ 可能这也就是为什么有的人刷完机后觉得变流畅吧？这仅仅代表我的个人猜测。&lt;/li&gt;
+&lt;li&gt;但是对于某些高阶玩家：如越狱或某魔或有漏洞的系统版本用户 &lt;em&gt;法力无边&lt;/em&gt;  用 Fliza 搜索 favicon 或者 需要清理图标的域名 找到对应的文件夹内图标删除即可，对于 2023 年。未来iOS的越狱已经越发艰难了，不少 App Store 上的软件已经限制了最低的系统版本，很少有人坚持低版本系统了。  &lt;em&gt;不要为了越狱放弃升级的快乐&lt;/em&gt; &amp;hellip;&lt;/li&gt;
+&lt;li&gt;对于 iOS Macos 端用：Edge / Chrome 浏览器的用户就完全不会有这个烦恼，对应软件设置里清理掉缓存重启APP就好了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end2.png&#34;
+	width=&#34;557&#34;
+	height=&#34;305&#34;
+	srcset=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end2_hu0b947ac4400b710a0b30bbd2c1029618_90166_480x0_resize_box_3.png 480w, https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end2_hu0b947ac4400b710a0b30bbd2c1029618_90166_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;收藏夹页 apple-touch-icon&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;182&#34;
+		data-flex-basis=&#34;438px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_safari.png&#34;
+	width=&#34;588&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_safari_hudb99087a45c1509332756fc75aff0f76_100804_480x0_resize_box_3.png 480w, https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_safari_hudb99087a45c1509332756fc75aff0f76_100804_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;标题栏 favicon&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;61&#34;
+		data-flex-basis=&#34;147px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ios网页以web应用程序的方式运行&#34;&gt;iOS网页以Web应用程序的方式运行&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;同上，在你的网站的HTML文件的 &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 部分添加:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;9
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;meta name=&amp;#34;apple-mobile-web-app-capable&amp;#34; content=&amp;#34;yes&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // 这个&amp;lt;meta&amp;gt;标签用于指示iOS设备上的Safari浏览器，将网站添加到主屏幕后，是否以Web应用程序的方式运行。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&amp;lt;meta name=&amp;#34;apple-mobile-web-app-status-bar-style&amp;#34; content=&amp;#34;black-translucent&amp;#34;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // 这个&amp;lt;meta&amp;gt;标签用于指定Web应用程序运行时的状态栏样式。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // 这个标签的content属性可以包含以下值，以定义状态栏的样式：
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // default：状态栏样式与系统默认一致。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // black：状态栏文字颜色为白色，背景为黑色。
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    // black-translucent：状态栏文字颜色为白色，背景为半透明黑色。
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;调试完成后打开 Safari 点击分享按钮：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add1.png&#34;
+	width=&#34;559&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add1_hu90feca3f9f865dbe785eacf0957c6bfd_59065_480x0_resize_box_3.png 480w, https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add1_hu90feca3f9f865dbe785eacf0957c6bfd_59065_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;你应该能看到这个界面，点击 Add to Home Screen / 添加到主屏幕&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;58&#34;
+		data-flex-basis=&#34;140px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add2.png&#34;
+	width=&#34;598&#34;
+	height=&#34;387&#34;
+	srcset=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add2_hufac3c6281b1b540b80be88ee73cf0d96_38912_480x0_resize_box_3.png 480w, https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add2_hufac3c6281b1b540b80be88ee73cf0d96_38912_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;点击 Add / 添加 以添加到主屏幕&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;154&#34;
+		data-flex-basis=&#34;370px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end.png&#34;
+	width=&#34;548&#34;
+	height=&#34;956&#34;
+	srcset=&#34;https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end_hu17eb2ce6f96053d8654e4dbc72a5bb1e_92228_480x0_resize_box_3.png 480w, https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end_hu17eb2ce6f96053d8654e4dbc72a5bb1e_92228_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;打开主屏幕上的图标后：是不是以  APP 的形式运行了？隐藏了状态栏的同时没有下方的导航栏&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;57&#34;
+		data-flex-basis=&#34;137px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;完美，本文为本人遇到的问题一些 Favicon 的问题的解决方法的分享，感谢阅读！&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Markdown Syntax Guide</title>
         <link>https://ikey.eu.org/p/markdown-syntax-guide/</link>
         <pubDate>Thu, 11 May 2023 00:00:00 +0000</pubDate>
@@ -238,12 +453,12 @@
 &lt;/div&gt;</description>
         </item>
         <item>
-        <title>Is Demo</title>
-        <link>https://ikey.eu.org/p/test-chinese/</link>
-        <pubDate>Fri, 09 Sep 2022 00:00:00 +0000</pubDate>
+        <title>Is Demos</title>
+        <link>https://ikey.eu.org/p/is-demos/</link>
+        <pubDate>Sun, 18 Sep 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://ikey.eu.org/p/test-chinese/</guid>
-        <description>&lt;img src="https://ikey.eu.org/p/test-chinese/k2.jpg" alt="Featured image of post Is Demo" /&gt;&lt;h2 id=&#34;正文测试&#34;&gt;正文测试&lt;/h2&gt;
+        <guid>https://ikey.eu.org/p/is-demos/</guid>
+        <description>&lt;img src="https://ikey.eu.org/p/is-demos/k2.jpg" alt="Featured image of post Is Demos" /&gt;&lt;h2 id=&#34;正文测试&#34;&gt;正文测试&lt;/h2&gt;
 &lt;p&gt;而这些并不是完全重要，更加重要的问题是， 带着这些问题，我们来审视一下学生会退会。 既然如何， 对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。 我们不得不面对一个非常尴尬的事实，那就是， 可是，即使是这样，学生会退会的出现仍然代表了一定的意义。 学生会退会，发生了会如何，不发生又会如何。 经过上述讨论， 生活中，若学生会退会出现了，我们就不得不考虑它出现了的事实。 学生会退会，到底应该如何实现。 这样看来， 在这种困难的抉择下，本人思来想去，寝食难安。 对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。 就我个人来说，学生会退会对我的意义，不能不说非常重大。 莎士比亚曾经提到过，人的一生是短的，但如果卑劣地过这一生，就太长了。这似乎解答了我的疑惑。 莫扎特说过一句富有哲理的话，谁和我一样用功，谁就会和我一样成功。这启发了我， 对我个人而言，学生会退会不仅仅是一个重大的事件，还可能会改变我的人生。 学生会退会，到底应该如何实现。 一般来说， 从这个角度来看， 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 在这种困难的抉择下，本人思来想去，寝食难安。 了解清楚学生会退会到底是一种怎么样的存在，是解决一切问题的关键。 一般来说， 生活中，若学生会退会出现了，我们就不得不考虑它出现了的事实。 问题的关键究竟为何？ 而这些并不是完全重要，更加重要的问题是。&lt;/p&gt;
 &lt;p&gt;奥斯特洛夫斯基曾经说过，共同的事业，共同的斗争，可以使人们产生忍受一切的力量。　带着这句话，我们还要更加慎重的审视这个问题： 一般来讲，我们都必须务必慎重的考虑考虑。 既然如此， 这种事实对本人来说意义重大，相信对这个世界也是有一定意义的。 带着这些问题，我们来审视一下学生会退会。 我认为， 我认为， 在这种困难的抉择下，本人思来想去，寝食难安。 问题的关键究竟为何？ 每个人都不得不面对这些问题。 在面对这种问题时， 要想清楚，学生会退会，到底是一种怎么样的存在。 我认为， 既然如此， 每个人都不得不面对这些问题。 在面对这种问题时， 那么， 我认为， 学生会退会因何而发生。&lt;/p&gt;
 &lt;h2 id=&#34;引用&#34;&gt;引用&lt;/h2&gt;
@@ -256,10 +471,10 @@
     &gt;最暖的憂傷 - 田馥甄&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;图片&#34;&gt;图片&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/test-chinese/florian-klauer-nptLmg6jqDo-unsplash.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/is-demos/florian-klauer-nptLmg6jqDo-unsplash.jpg&#34;
 	width=&#34;667&#34;
 	height=&#34;1000&#34;
-	srcset=&#34;https://ikey.eu.org/p/test-chinese/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_480x0_resize_q75_box.jpg 480w, https://ikey.eu.org/p/test-chinese/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://ikey.eu.org/p/is-demos/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_480x0_resize_q75_box.jpg 480w, https://ikey.eu.org/p/is-demos/florian-klauer-nptLmg6jqDo-unsplash_hu595aaf3b3dbbb41af5aed8d3958cc9f9_13854_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Photo by Florian Klauer on Unsplash&#34;
@@ -279,10 +494,10 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/test-chinese/helena-hertz-wWZzXlDpMog-unsplash.jpg&#34;
+&lt;p&gt;&lt;img src=&#34;https://ikey.eu.org/p/is-demos/helena-hertz-wWZzXlDpMog-unsplash.jpg&#34;
 	width=&#34;1000&#34;
 	height=&#34;750&#34;
-	srcset=&#34;https://ikey.eu.org/p/test-chinese/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_480x0_resize_q75_box.jpg 480w, https://ikey.eu.org/p/test-chinese/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://ikey.eu.org/p/is-demos/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_480x0_resize_q75_box.jpg 480w, https://ikey.eu.org/p/is-demos/helena-hertz-wWZzXlDpMog-unsplash_hu45a5e3ad5e058da6a00650ed8fd40bea_15530_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Photo by Helena Hertz on Unsplash&#34;
@@ -292,10 +507,10 @@
 		data-flex-grow=&#34;133&#34;
 		data-flex-basis=&#34;320px&#34;
 	
-&gt;  &lt;img src=&#34;https://ikey.eu.org/p/test-chinese/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg&#34;
+&gt;  &lt;img src=&#34;https://ikey.eu.org/p/is-demos/hudai-gayiran-3Od_VKcDEAA-unsplash.jpg&#34;
 	width=&#34;667&#34;
 	height=&#34;1000&#34;
-	srcset=&#34;https://ikey.eu.org/p/test-chinese/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_480x0_resize_q75_box.jpg 480w, https://ikey.eu.org/p/test-chinese/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_1024x0_resize_q75_box.jpg 1024w&#34;
+	srcset=&#34;https://ikey.eu.org/p/is-demos/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_480x0_resize_q75_box.jpg 480w, https://ikey.eu.org/p/is-demos/hudai-gayiran-3Od_VKcDEAA-unsplash_hub241c2a9c7a2caf7e16a2a5bbc7141ff_18711_1024x0_resize_q75_box.jpg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Photo by Hudai Gayiran on Unsplash&#34;
@@ -325,7 +540,7 @@
         <item>
         <title>Markdown Syntax Guides</title>
         <link>https://ikey.eu.org/p/markdown-syntax-guides/</link>
-        <pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate>
+        <pubDate>Wed, 15 Dec 2021 00:00:00 +0000</pubDate>
         
         <guid>https://ikey.eu.org/p/markdown-syntax-guides/</guid>
         <description>&lt;img src="https://ikey.eu.org/p/markdown-syntax-guides/k3.jpg" alt="Featured image of post Markdown Syntax Guides" /&gt;</description>
@@ -333,7 +548,7 @@
         <item>
         <title>BiliBili test</title>
         <link>https://ikey.eu.org/p/bilibili-test/</link>
-        <pubDate>Thu, 30 Sep 2021 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate>
         
         <guid>https://ikey.eu.org/p/bilibili-test/</guid>
         <description>&lt;h2 id=&#34;bilibilibi-shortcode&#34;&gt;bilibilibi Shortcode&lt;/h2&gt;
@@ -377,7 +592,7 @@
         <item>
         <title>Rich Content</title>
         <link>https://ikey.eu.org/p/rich-content/</link>
-        <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 12 Mar 2019 00:00:00 +0000</pubDate>
         
         <guid>https://ikey.eu.org/p/rich-content/</guid>
         <description>&lt;p&gt;Hugo ships with several &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -502,7 +717,7 @@
         <item>
         <title>BiliBili test</title>
         <link>https://ikey.eu.org/p/bilibili-test/</link>
-        <pubDate>Sun, 30 Sep 2018 00:00:00 +0000</pubDate>
+        <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
         
         <guid>https://ikey.eu.org/p/bilibili-test/</guid>
         <description></description>

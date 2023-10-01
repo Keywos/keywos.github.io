@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name='description' content='我注意到许多网站的站点图标并不完整，通过一番研究，我发现站点图标的一些常见问题，比如 Safari 有缓存无法获取新图标 apple-touch-icon / favicon 等，而且在涉及中文内容时信息相对匮乏。因此，我决定对这个话题进行一些初步的整理和研究。'>
+<title>站点图标：Safari 和 Favicon 的最佳实践</title>
+
+<link rel='canonical' href='https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/'>
+
+<link rel="stylesheet" href="/scss/style.min.40458b57d2432bc8534c49a42903bc1ba9e69d27210cf9f0306965bb9c13da0f.css"><meta property='og:title' content='站点图标：Safari 和 Favicon 的最佳实践'>
+<meta property='og:description' content='我注意到许多网站的站点图标并不完整，通过一番研究，我发现站点图标的一些常见问题，比如 Safari 有缓存无法获取新图标 apple-touch-icon / favicon 等，而且在涉及中文内容时信息相对匮乏。因此，我决定对这个话题进行一些初步的整理和研究。'>
+<meta property='og:url' content='https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/'>
+<meta property='og:site_name' content='ThenKey'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-10-01T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-10-01T00:00:00&#43;00:00'/><meta property='og:image' content='https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.jpg' />
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+
+
+
+    </head>
+    <body class="
+    article-page
+    ">
+<script>
+    (function () {
+        const colorSchemeKey = 'StackColorScheme';
+        if (!localStorage.getItem(colorSchemeKey)) {
+            localStorage.setItem(colorSchemeKey, "auto");
+        }
+    })();
+</script><script>
+    (function () {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+
+    
+    window.addEventListener('beforeunload', function (event) {
+        try {
+            let timestamp = Date.now(), xys = false;
+            let loaclc = localStorage.getItem('ColorTimestamp')
+
+            if (loaclc === null) {
+                localStorage.setItem('ColorTimestamp', timestamp + 1000 * 60 * 60 * 12)
+                xys = true;
+            }
+            if (loaclc < timestamp) {
+                xys = true;
+            }
+            if (xys) {
+                localStorage.removeItem("StackColorScheme");
+            }
+
+        } catch (error) {
+
+        }
+    });
+</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_huef2dfe0ca1f2b5ba72358852d7117c77_14349_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">ThenKey</a></h1>
+            <h2 class="site-description">不能说的秘密</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/keywos'
+                        target="_blank"
+                        title="0GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg class="icon" style="width: 1.5em;height:1.2em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8172">
+    <path d="M682.215454 981.446137c-25.532318 0-42.553863-17.021545-42.553864-42.553864v-165.960067c4.255386-34.043091-8.510773-59.575409-29.787704-80.852341-12.766159-12.766159-17.021545-29.787704-8.510773-42.553864 4.255386-17.021545 21.276932-25.532318 34.043091-29.787704 123.406204-12.766159 238.301635-55.320023 238.301635-255.323181 0-46.80925-17.021545-93.6185-51.064636-131.916976-12.766159-12.766159-12.766159-29.787704-8.510772-42.553864 12.766159-34.043091 12.766159-68.086182 4.255386-102.129272-21.276932 4.255386-55.320023 17.021545-110.640045 55.320022-8.510773 8.510773-21.276932 8.510773-34.043091 4.255387-89.363113-25.532318-187.236999-25.532318-276.600112 0-12.766159 4.255386-25.532318 4.255386-38.298477-4.255387C307.741455 104.836549 269.442978 92.07039 248.166047 87.815004c-8.510773 34.043091-8.510773 68.086182 4.255386 102.129272 4.255386 17.021545 4.255386 34.043091-8.510773 42.553864-34.043091 38.298477-51.064636 85.107727-51.064636 131.916976 0 200.003158 114.895431 242.557022 238.301635 255.323181 17.021545 0 29.787704 12.766159 34.043091 29.787704 4.255386 17.021545 0 34.043091-8.510773 42.553864-21.276932 21.276932-29.787704 46.80925-29.787704 76.596954v165.960068c0 25.532318-17.021545 42.553863-42.553863 42.553863s-42.553863-17.021545-42.553864-42.553863v-72.341568c-127.66159 21.276932-182.981613-51.064636-221.28009-97.873886-17.021545-21.276932-29.787704-38.298477-46.80925-42.553864-21.276932-4.255386-38.298477-29.787704-29.787704-51.064636 4.255386-21.276932 29.787704-38.298477 51.064636-29.787704 42.553863 12.766159 68.086182 42.553863 93.6185 72.341568 34.043091 46.80925 63.830795 80.852341 153.193908 63.830795v-4.255386c0-25.532318 4.255386-55.320023 12.766159-76.596955-119.150818-25.532318-246.812408-102.129272-246.812408-327.664748 0-63.830795 21.276932-123.406204 59.575409-170.215454-17.021545-59.575409-12.766159-114.895431 12.766159-170.215454 4.255386-12.766159 12.766159-21.276932 25.532318-25.532318 17.021545-4.255386 72.341568-12.766159 187.236999 59.575409 93.6185-21.276932 191.492386-21.276932 280.855499 0 110.640045-72.341568 170.215454-63.830795 187.236999-59.575409 12.766159 4.255386 21.276932 12.766159 25.532319 25.532318 21.276932 55.320023 25.532318 110.640045 12.766159 165.960067 38.298477 46.80925 59.575409 106.384659 59.575408 170.215454 0 242.557022-144.683136 306.387817-246.812408 331.920135 8.510773 25.532318 12.766159 55.320023 12.766159 80.852341V938.892273c0 25.532318-17.021545 42.553863-42.553863 42.553864z" fill="#9DA7B8" p-id="8173"></path>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://sub.ikey.eu.org'
+                        target="_blank"
+                        title="1SubStore"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" style="width: 2em;height:2em; vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="-20 -25 290 300">
+    <defs>
+        <linearGradient id="a" x1="100%" x2="0%" y1="50%" y2="50%"><stop offset="0%" stop-color="#9DA7BA"/><stop offset="100%" stop-color="#9DA7BA"/></linearGradient>
+    </defs><path fill="url(#a)" d="M177.837037,131.851852 L185.659259,139.437037 C189.925926,143.466667 194.666667,150.577778 196.088889,154.844444 C204.148148,179.259259 180.681481,203.674074 156.266667,196.325926 C150.103704,194.42963 141.096296,187.318519 128.296296,174.518519 L109.57037,155.555556 L114.785185,150.340741 L120,145.125926 L138.488889,163.377778 C153.659259,178.548148 158.162963,181.62963 164.562963,181.62963 C181.62963,181.62963 187.555556,162.192593 174.518519,149.62963 L167.407407,142.755556 L172.622222,137.303704 L177.837037,131.851852 Z M61.6888889,131.851852 L67.1407407,137.066667 L72.3555556,142.044444 L65.4814815,150.103704 C57.1851852,159.585185 56.237037,170.014815 63.1111111,176.888889 C70.4592593,184.237037 82.0740741,183.051852 90.3703704,174.518519 L97.2444444,167.407407 L102.696296,172.622222 L108.148148,177.837037 L100.562963,185.659259 C85.8666667,200.82963 66.6666667,201.777778 52.6814815,187.555556 C38.4592593,173.57037 39.1703704,155.318519 54.3407407,139.674074 L61.6888889,131.851852 Z M98.9037037,96.2962963 C99.2447044,96.2962963 101.098272,97.9756253 104.464407,101.334283 L104.96781,101.837782 C106.167611,103.040585 107.543773,104.439194 109.096296,106.033607 L95.3481481,120 L102.222222,127.111111 L109.096296,134.222222 L103.881481,139.437037 L98.6666667,144.888889 L86.3407407,132.325926 L73.7777778,120 L85.6296296,108.148148 C92.0296296,101.748148 97.9555556,96.2962963 98.9037037,96.2962963 Z M140.622222,96.2962963 C141.57037,96.2962963 147.496296,101.748148 153.896296,108.148148 L165.748148,120 L153.185185,132.325926 L140.859259,144.888889 L135.644444,139.437037 L130.42963,134.222222 L144.177778,120 L130.42963,106.033607 C132.093047,104.325307 133.55401,102.841783 134.812517,101.583036 L135.305122,101.091525 C138.517172,97.8947058 140.289539,96.2962963 140.622222,96.2962963 Z M83.7333333,43.4653029 C89.8962963,45.3615992 98.9037037,52.4727103 111.703704,65.2727103 L130.42963,84.2356733 L120,94.6653029 L101.511111,76.4134511 C86.3407407,61.2430807 81.837037,58.1615992 75.437037,58.1615992 C58.3703704,58.1615992 52.4444444,77.5986362 65.4814815,90.1615992 L72.5925926,97.0356733 L62.162963,107.939377 L54.3407407,100.354192 C50.0740741,96.3245622 45.3333333,89.2134511 43.9111111,84.9467844 C35.8518519,60.5319696 59.3185185,36.1171548 83.7333333,43.4653029 Z M187.318519,52.2356733 C201.540741,66.2208585 200.82963,84.4727103 185.659259,100.117155 L178.311111,107.939377 L172.859259,102.724562 L167.644444,97.7467844 L174.518519,89.6875251 C182.814815,80.2060437 183.762963,69.776414 176.888889,62.90234 C169.540741,55.5541918 157.925926,56.739377 149.62963,65.2727103 L142.755556,72.3838214 L131.851852,61.9541918 L139.437037,54.1319696 C154.133333,38.9615992 173.333333,38.0134511 187.318519,52.2356733 Z"/></svg>
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://baidu.ikey.eu.org'
+                        target="_blank"
+                        title="2Baidu"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg class="icon" style="width: 1.5em;height:1.4em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="10584">
+    <path d="M401.83 129.958c16.769-2.973 33.617 1.447 47.746 9.43 22.229 13.867 35.778 34.181 43.964 57.469a141.923 141.923 0 0 1-3.259 108.488c-6.596 16.821-18.516 32.685-33.714 45.06-11.929 9.412-28.738 15.352-43.916 16.839-16.809 0-31.973-4.451-45.537-13.867-20.589-13.871-33.611-35.671-40.656-57.472-10.299-32.689-10.299-69.872 3.259-102.045 8.669-20.31 20.594-37.15 39.027-49.538 10.842-8.422 21.146-12.878 33.065-14.364h0.021z m243.941 16.84c11.929-1.486 23.854 0 33.616 4.459 15.174 6.438 27.099 16.839 37.407 29.229 13.549 16.849 23.844 37.153 27.099 57.464a98.708 98.708 0 0 1-4.875 43.592c-3.259 18.823-11.928 35.677-22.224 49.538-10.308 12.39-22.233 24.775-37.407 32.699-13.553 7.931-30.356 10.904-45.536 9.417-18.438-1.486-39.032-7.924-52.59-20.314-15.179-12.38-22.224-29.229-27.099-46.565-3.259-18.823-3.259-37.155-1.629-55.49a114.693 114.693 0 0 1 20.594-46.556c10.314-15.347 22.234-27.737 35.782-40.127 9.764-6.438 23.312-14.362 36.861-17.336v-0.01h0.001zM207.222 306.316c16.808-2.993 35.773 0 52.581 7.924 23.853 12.39 40.656 30.715 52.59 52.517 3.245 9.402 8.669 18.823 8.669 29.224 3.25 24.765 1.62 51.029-4.884 74.308a88.405 88.405 0 0 1-28.728 43.597c-16.808 13.866-40.661 21.781-64.51 21.781-18.438 0-39.032-5.99-52.581-18.828-18.433-15.348-30.358-37.148-37.407-58.891-3.791-15.363-6.997-30.71-3.791-46.575 3.249-26.251 11.924-51.026 28.728-74.303 10.304-15.362 28.728-27.737 49.331-30.715v-0.039h0.002z m570.823 57.462c20.595-2.992 43.907 0 62.886 9.417 16.803 9.412 30.352 23.277 40.657 38.641 6.504 13.871 13.55 27.737 13.55 43.1 0 21.791 1.629 43.587-3.25 63.404-3.254 13.871-10.299 29.234-20.604 40.127-10.299 10.889-23.849 20.31-39.008 23.289-15.158 2.972-31.976 4.459-47.702 2.992-18.438-1.477-37.402-5.942-52.581-16.839-13.558-9.412-22.233-23.277-27.108-37.153-6.996-18.823-6.996-40.128-6.996-60.437 0-21.801 3.249-41.614 13.553-61.889a82.747 82.747 0 0 1 31.973-35.671 136.578 136.578 0 0 1 34.694-8.915l-0.064-0.066z m55.841 381.945c-3.26-27.738-15.18-53.994-37.403-74.303-3.259-2.998-8.684-7.925-13.558-10.903-28.728-21.796-55.835-45.074-81.319-68.363-27.098-24.778-52.575-51.029-74.809-80.253-16.798-26.256-40.647-49.543-71.005-61.888-18.438-7.926-40.662-12.375-62.89-9.403-37.403 2.993-72.634 23.279-94.868 49.539-6.504 5.94-10.289 13.866-15.178 20.304-16.798 23.287-39.027 45.089-60.714 64.881-11.929 10.879-25.449 20.28-37.437 30.691-6.509 7.924-15.178 10.903-22.224 16.839-25.483 18.828-50.961 40.127-66.14 66.382-11.919 16.849-16.808 37.158-18.433 57.472 0 16.839 3.255 34.176 8.671 51.016a143.51 143.51 0 0 0 27.18 48.052c20.595 24.773 52.576 38.649 84.563 40.137 39.027 1.476 79.689 0 118.716-5.985 18.438-2.997 35.783-7.931 52.591-9.417 37.402-2.992 74.799-1.486 111.66 7.925 30.358 9.415 60.715 13.876 93.247 15.352 31.977 0 66.131-2.992 94.868-16.839 20.594-10.898 37.402-26.251 47.701-46.565 11.382-25.764 20.053-54.987 16.808-84.714l-0.027 0.043z m-353.987 79.264h-96.501c-10.296 0-20.595 0-30.358-1.486-22.224-4.451-40.647-16.84-54.21-32.69-10.291-10.898-15.174-26.261-18.423-40.127-3.25-13.866-3.26-29.238 0-45.079 4.874-16.849 15.178-32.699 28.728-45.088a130.766 130.766 0 0 1 40.656-21.796 67.337 67.337 0 0 1 18.428-2.998h57.465v-72.864h54.215v262.128z m220.078 0H567.711c-13.549 0-28.728-4.449-39.027-13.871-11.934-9.407-18.428-24.77-18.428-38.641V640.714h55.825v122.345a23.94 23.94 0 0 0 4.889 13.876c4.875 4.464 10.291 5.942 16.804 5.942h57.455v-142.67h54.21v184.78h0.538z m-335.544-142.67c3.245-1.486 6.504-2.992 11.919-2.992h49.331v103.551h-43.906c-15.179 0-30.358-5.942-39.032-16.839-6.504-9.411-11.929-21.801-10.299-32.689a81.151 81.151 0 0 1 4.874-27.743c6.997-12.394 16.808-18.335 27.113-23.288z" fill="#9DA7B8" p-id="10585"></path>
+</svg>
+
+                        
+                    </a>
+                </li>
+            
+        </ol><div></div>
+    <ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>主页</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E5%85%B3%E4%BA%8E/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>关于</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>归档</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>搜索</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/%E9%93%BE%E6%8E%A5/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>链接</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>深色模式</span>
+                </li>
+
+                
+
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#什么是-favicon">什么是 favicon</a></li>
+    <li><a href="#怎样设置">怎样设置</a></li>
+    <li><a href="#关于-macos-的-safari-的缓存问题">关于 Macos 的 Safari 的缓存问题</a></li>
+    <li><a href="#ios网页以web应用程序的方式运行">iOS网页以Web应用程序的方式运行</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
+                <img src="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index_hu02ed1d70091071c8a6efdf5bcaed5a37_66282_800x0_resize_q75_box.jpg"
+                        srcset="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index_hu02ed1d70091071c8a6efdf5bcaed5a37_66282_800x0_resize_q75_box.jpg 800w, /p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index_hu02ed1d70091071c8a6efdf5bcaed5a37_66282_1600x0_resize_q75_box.jpg 1600w"
+                        width="800" 
+                        height="493" 
+                        loading="lazy"
+                        alt="Featured image of post 站点图标：Safari 和 Favicon 的最佳实践" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">站点图标：Safari 和 Favicon 的最佳实践</a>
+        </h2>
+    
+        
+        <h3 class="article-subtitle">
+            我注意到许多网站的站点图标并不完整，通过一番研究，我发现站点图标的一些常见问题，比如 Safari 有缓存无法获取新图标 apple-touch-icon / favicon 等，而且在涉及中文内容时信息相对匮乏。因此，我决定对这个话题进行一些初步的整理和研究。
+        </h3>
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Oct 01, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 1 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="什么是-favicon">什么是 favicon</h2>
+<p>简单地讲就是浏览器标签页或收藏夹里显示的这些图标。</p>
+<p>详细介绍看  <a class="link" href="https://baike.baidu.com/item/Favicon/3410211"  target="_blank" rel="noopener"
+    >百度百科</a> 就好：</p>
+<blockquote>
+<p>Favicon（即&quot;Favorites Icon&quot;的缩写）是一个小型的图标文件，通常以.ico格式存在，用于标识特定网站或网页。这个图标通常显示在网页浏览器标签页、收藏夹和书签栏等位置，以提供与网站相关的可视标识。</p>
+</blockquote>
+<h2 id="怎样设置">怎样设置</h2>
+<ul>
+<li>
+<p>创建Favicon图标：</p>
+<ul>
+<li>使用图形设计工具（如Adobe Photoshop、GIMP等）创建 Favicon 图标。</li>
+<li>如果输出 <code>ico</code> 格式，Macos Photoshop不能直接输出这种格式，需要使用插件 <code>ICOFormat</code>, 尺寸为 32x32 或者 16x16.</li>
+<li>也可以设计  <code>png</code> <code>svg</code> 以适应现代浏览器的需求，后者为矢量图拥有无损放大的能力，</li>
+</ul>
+</li>
+<li>
+<p>上传 Favicon 文件到你的网站根目录：</p>
+</li>
+<li>
+<p>在你的网站的HTML文件的 <code>&lt;head&gt;</code> 部分添加:</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;link rel=&#34;icon&#34; href=&#34;/favicon.ico&#34; type=&#34;image/x-icon&#34;&gt;
+</span></span><span class="line"><span class="cl">    // 这是标准的Favicon链接，指向一个.ico格式的图标文件。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;link rel=&#34;apple-touch-icon&#34; href=&#34;/apple-touch-icon.png&#34;&gt;
+</span></span><span class="line"><span class="cl">    // 这是用于iOS设备的Apple Touch图标链接。尺寸一般为 180x180
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;link rel=&#34;icon&#34; href=/favicon.svg&#34; type=&#34;image/svg+xml&#34;&gt;
+</span></span><span class="line"><span class="cl">    // 这是一个使用SVG格式的Favicon图标链接。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="关于-macos-的-safari-的缓存问题">关于 Macos 的 Safari 的缓存问题</h2>
+<p><img src="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/touch_icon.png"
+	width="458"
+	height="339"
+	srcset="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/touch_icon_huf9e240e25d17ff2f761e3afef50e230d_26024_480x0_resize_box_3.png 480w, /p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/touch_icon_huf9e240e25d17ff2f761e3afef50e230d_26024_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="收藏夹 apple-touch-icon"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="135"
+		data-flex-basis="324px"
+	
+></p>
+<ul>
+<li>
+<p>Safari 会根据网站的域名为键值进行缓存 网站的 favicon 和 apple-touch-icon 图标，这也就导致了如果某些网站更新了 ico 图标，而用户则无法获取最新的图标，但是 Macos 可以清除缓存重新下载方法如下：</p>
+<ul>
+<li>首先删除收藏页到图标并关闭标签页</li>
+<li>打开访达 App 输入快捷键 <kbd>command</kbd> + <kbd>shift</kbd> + <kbd> G </kbd> 输入 <code>～/Library/Safari</code> 或  <code>/Users/用户名/Library/Safari</code> 进入目录 在这里找到 如图所示的两个文件夹，这就是缓存他们的图标，清除掉，重启 Safari 就好了</li>
+</ul>
+</li>
+</ul>
+<p><img src="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache.png"
+	width="946"
+	height="589"
+	srcset="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache_hu01db51e95cd32b2896a66d532c9b1a88_79618_480x0_resize_box_3.png 480w, /p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache_hu01db51e95cd32b2896a66d532c9b1a88_79618_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="清理这两个文件夹"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="160"
+		data-flex-basis="385px"
+	
+></p>
+<p><img src="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache-re.png"
+	width="880"
+	height="596"
+	srcset="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache-re_hubbcd73385afceb7d419ef87796f3b11b_58830_480x0_resize_box_3.png 480w, /p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/safari_icon_cache-re_hubbcd73385afceb7d419ef87796f3b11b_58830_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="重启 Safari 并重新访问网站添加后"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="147"
+		data-flex-basis="354px"
+	
+></p>
+<ul>
+<li>iOS Safari 的 favicon 图标 清理掉十分困难，改时间，设置内清除浏览记录都不行，重度强迫症表示很难接受。
+<ul>
+<li>除非 <code>重置系统或者刷机</code> 才能清理掉这个缓存，或许某些 iOS 的缓存也是类似这种持久缓存，没用设置过期时间？或者bug？ 可能这也就是为什么有的人刷完机后觉得变流畅吧？这仅仅代表我的个人猜测。</li>
+<li>但是对于某些高阶玩家：如越狱或某魔或有漏洞的系统版本用户 <em>法力无边</em>  用 Fliza 搜索 favicon 或者 需要清理图标的域名 找到对应的文件夹内图标删除即可，对于 2023 年。未来iOS的越狱已经越发艰难了，不少 App Store 上的软件已经限制了最低的系统版本，很少有人坚持低版本系统了。  <em>不要为了越狱放弃升级的快乐</em> &hellip;</li>
+<li>对于 iOS Macos 端用：Edge / Chrome 浏览器的用户就完全不会有这个烦恼，对应软件设置里清理掉缓存重启APP就好了</li>
+</ul>
+</li>
+</ul>
+<p><img src="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end2.png"
+	width="557"
+	height="305"
+	srcset="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end2_hu0b947ac4400b710a0b30bbd2c1029618_90166_480x0_resize_box_3.png 480w, /p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end2_hu0b947ac4400b710a0b30bbd2c1029618_90166_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="收藏夹页 apple-touch-icon"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="182"
+		data-flex-basis="438px"
+	
+></p>
+<p><img src="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_safari.png"
+	width="588"
+	height="956"
+	srcset="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_safari_hudb99087a45c1509332756fc75aff0f76_100804_480x0_resize_box_3.png 480w, /p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_safari_hudb99087a45c1509332756fc75aff0f76_100804_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="标题栏 favicon"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="61"
+		data-flex-basis="147px"
+	
+></p>
+<h2 id="ios网页以web应用程序的方式运行">iOS网页以Web应用程序的方式运行</h2>
+<ul>
+<li>同上，在你的网站的HTML文件的 <code>&lt;head&gt;</code> 部分添加:</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;meta name=&#34;apple-mobile-web-app-capable&#34; content=&#34;yes&#34;&gt;
+</span></span><span class="line"><span class="cl">    // 这个&lt;meta&gt;标签用于指示iOS设备上的Safari浏览器，将网站添加到主屏幕后，是否以Web应用程序的方式运行。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">&lt;meta name=&#34;apple-mobile-web-app-status-bar-style&#34; content=&#34;black-translucent&#34;&gt;
+</span></span><span class="line"><span class="cl">    // 这个&lt;meta&gt;标签用于指定Web应用程序运行时的状态栏样式。
+</span></span><span class="line"><span class="cl">    // 这个标签的content属性可以包含以下值，以定义状态栏的样式：
+</span></span><span class="line"><span class="cl">    // default：状态栏样式与系统默认一致。
+</span></span><span class="line"><span class="cl">    // black：状态栏文字颜色为白色，背景为黑色。
+</span></span><span class="line"><span class="cl">    // black-translucent：状态栏文字颜色为白色，背景为半透明黑色。
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调试完成后打开 Safari 点击分享按钮：</p>
+<p><img src="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add1.png"
+	width="559"
+	height="956"
+	srcset="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add1_hu90feca3f9f865dbe785eacf0957c6bfd_59065_480x0_resize_box_3.png 480w, /p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add1_hu90feca3f9f865dbe785eacf0957c6bfd_59065_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="你应该能看到这个界面，点击 Add to Home Screen / 添加到主屏幕"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="58"
+		data-flex-basis="140px"
+	
+></p>
+<p><img src="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add2.png"
+	width="598"
+	height="387"
+	srcset="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add2_hufac3c6281b1b540b80be88ee73cf0d96_38912_480x0_resize_box_3.png 480w, /p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_add2_hufac3c6281b1b540b80be88ee73cf0d96_38912_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="点击 Add / 添加 以添加到主屏幕"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="154"
+		data-flex-basis="370px"
+	
+></p>
+<p><img src="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end.png"
+	width="548"
+	height="956"
+	srcset="/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end_hu17eb2ce6f96053d8654e4dbc72a5bb1e_92228_480x0_resize_box_3.png 480w, /p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/ios_end_hu17eb2ce6f96053d8654e4dbc72a5bb1e_92228_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="打开主屏幕上的图标后：是不是以  APP 的形式运行了？隐藏了状态栏的同时没有下方的导航栏"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="57"
+		data-flex-basis="137px"
+	
+></p>
+<p>完美，本文为本人遇到的问题一些 Favicon 的问题的解决方法的分享，感谢阅读！</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>ThenKey 商业转载请联系作者获得授权，非商业转载请注明出处。</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy;ThenKey - Build: 2023-10-01 12:18:41 
+        
+    </section>
+    
+    <section class="powerby" id="Deldark-mode-toggle">
+  <a href=""> Click to Switch Auto DarkMode And Refresh</a>
+       
+    </section>
+
+    
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
