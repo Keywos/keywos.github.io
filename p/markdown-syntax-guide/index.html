@@ -49,16 +49,10 @@
     
     window.addEventListener('beforeunload', function (event) {
         try {
-            let timestamp = Date.now(), xys = false;
+            let timestamp = Date.now();
             let loaclc = localStorage.getItem('ColorTimestamp')
 
-            if (loaclc === null) {
-                xys = true;
-            }
-            if (loaclc < timestamp) {
-                xys = true;
-            }
-            if (xys) {
+            if (loaclc === null || loaclc < timestamp) {
                 localStorage.removeItem("StackColorScheme");
                 localStorage.setItem('ColorTimestamp', timestamp + 1000 * 60 * 60 * 12)
             }
