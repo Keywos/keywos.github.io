@@ -8,7 +8,7 @@
 
 <link rel='canonical' href='https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/'>
 
-<link rel="stylesheet" href="/scss/style.min.9e984265198f595bccde4e09926b8d4fbed4972da0086fbbfc6fbd29e9ddce27.css"><meta property='og:title' content='站点图标：Safari 和 Favicon 的最佳实践'>
+<link rel="stylesheet" href="/scss/style.min.e8a4e2742dbdc4bfee9a5286fd4fe4cb58520e6ae480213fbe309130dc59db75.css"><meta property='og:title' content='站点图标：Safari 和 Favicon 的最佳实践'>
 <meta property='og:description' content='我注意到许多网站的站点图标并不完整，通过一番研究，我发现站点图标的一些常见问题，比如 Safari 有缓存无法获取新图标 apple-touch-icon / favicon 等，而且在涉及中文内容时信息相对匮乏。因此，我决定对这个话题进行一些初步的整理和研究。'>
 <meta property='og:url' content='https://ikey.eu.org/p/%E7%AB%99%E7%82%B9%E5%9B%BE%E6%A0%87safari-%E5%92%8C-favicon-%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/'>
 <meta property='og:site_name' content='ThenKey'>
@@ -416,14 +416,14 @@
 </span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;link rel=&#34;icon&#34; href=&#34;/favicon.ico&#34; type=&#34;image/x-icon&#34;&gt;
-</span></span><span class="line"><span class="cl">    // 这是标准的Favicon链接，指向一个.ico格式的图标文件。
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;icon&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/favicon.ico&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;image/x-icon&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 这是标准的Favicon链接，指向一个.ico格式的图标文件。 --&gt;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;link rel=&#34;apple-touch-icon&#34; href=&#34;/apple-touch-icon.png&#34;&gt;
-</span></span><span class="line"><span class="cl">    // 这是用于iOS设备的Apple Touch图标链接。尺寸一般为 180x180
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;apple-touch-icon&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;/apple-touch-icon.png&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 这是用于iOS设备的Apple Touch图标链接。尺寸一般为 180x180 --&gt;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;link rel=&#34;icon&#34; href=/favicon.svg&#34; type=&#34;image/svg+xml&#34;&gt;
-</span></span><span class="line"><span class="cl">    // 这是一个使用SVG格式的Favicon图标链接。
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;icon&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">/favicon.svg&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;image/svg+xml&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 这是一个使用SVG格式的Favicon图标链接。 --&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="关于-macos-的-safari-的缓存问题">关于 Macos 的 Safari 的缓存问题</h2>
@@ -532,15 +532,15 @@
 </span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">&lt;meta name=&#34;apple-mobile-web-app-capable&#34; content=&#34;yes&#34;&gt;
-</span></span><span class="line"><span class="cl">    // 这个&lt;meta&gt;标签用于指示iOS设备上的Safari浏览器，将网站添加到主屏幕后，是否以Web应用程序的方式运行。
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;apple-mobile-web-app-capable&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;yes&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 这个&lt;meta&gt;标签用于指示iOS设备上的Safari浏览器，将网站添加到主屏幕后，是否以Web应用程序的方式运行。 --&gt;</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;meta name=&#34;apple-mobile-web-app-status-bar-style&#34; content=&#34;black-translucent&#34;&gt;
-</span></span><span class="line"><span class="cl">    // 这个&lt;meta&gt;标签用于指定Web应用程序运行时的状态栏样式。
-</span></span><span class="line"><span class="cl">    // 这个标签的content属性可以包含以下值，以定义状态栏的样式：
-</span></span><span class="line"><span class="cl">    // default：状态栏样式与系统默认一致。
-</span></span><span class="line"><span class="cl">    // black：状态栏文字颜色为白色，背景为黑色。
-</span></span><span class="line"><span class="cl">    // black-translucent：状态栏文字颜色为白色，背景为半透明黑色。
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;apple-mobile-web-app-status-bar-style&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;black-translucent&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 这个&lt;meta&gt;标签用于指定Web应用程序运行时的状态栏样式。 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- 这个标签的content属性可以包含以下值，以定义状态栏的样式： --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- default：状态栏样式与系统默认一致。 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- black：状态栏文字颜色为白色，背景为黑色。 --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- black-translucent：状态栏文字颜色为白色，背景为半透明黑色。 --&gt;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>调试完成后打开 Safari 点击分享按钮：</p>
@@ -625,7 +625,7 @@
     <section class="copyright">
         &copy;
         
-            Build - 2023-10-01 21:51:01 - 
+            Build - 2023-10-01 22:11:10 - 
 
         
         ThenKey
