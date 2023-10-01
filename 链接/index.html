@@ -10,7 +10,7 @@ This page&amp;rsquo;s frontmatter:
 
 <link rel='canonical' href='https://ikey.eu.org/%E9%93%BE%E6%8E%A5/'>
 
-<link rel="stylesheet" href="/scss/style.min.21722f2ae3f2c018f98f726562002cd7540c6456eb5a56dc20491db5edffbaba.css"><meta property='og:title' content='链接'>
+<link rel="stylesheet" href="/scss/style.min.675ff80d53591704718c487a5a5cbdd56abca0ea7b069528c0b303322f9e86d0.css"><meta property='og:title' content='链接'>
 <meta property='og:description' content='To use this feature, add links section to frontmatter.
 This page&amp;rsquo;s frontmatter:
 1 2 3 4 5 6 7 8 9 links: - title: GitHub description: GitHub is the world&amp;#39;s largest software development platform. website: https://github.com image: https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png - title: TypeScript description: TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. website: https://www.typescriptlang.org image: ts-logo-128.jpg image field accepts both local and external images.'>
@@ -57,7 +57,6 @@ This page&amp;rsquo;s frontmatter:
             let loaclc = localStorage.getItem('ColorTimestamp')
 
             if (loaclc === null) {
-                localStorage.setItem('ColorTimestamp', timestamp + 1000 * 60 * 60 * 12)
                 xys = true;
             }
             if (loaclc < timestamp) {
@@ -65,6 +64,7 @@ This page&amp;rsquo;s frontmatter:
             }
             if (xys) {
                 localStorage.removeItem("StackColorScheme");
+                localStorage.setItem('ColorTimestamp', timestamp + 1000 * 60 * 60 * 12)
             }
 
         } catch (error) {

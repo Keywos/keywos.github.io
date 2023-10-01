@@ -8,7 +8,7 @@
 
 <link rel='canonical' href='https://ikey.eu.org/p/is-demos/'>
 
-<link rel="stylesheet" href="/scss/style.min.21722f2ae3f2c018f98f726562002cd7540c6456eb5a56dc20491db5edffbaba.css"><meta property='og:title' content='Is Demos'>
+<link rel="stylesheet" href="/scss/style.min.675ff80d53591704718c487a5a5cbdd56abca0ea7b069528c0b303322f9e86d0.css"><meta property='og:title' content='Is Demos'>
 <meta property='og:description' content='The only way to do great work is to love what you do.'>
 <meta property='og:url' content='https://ikey.eu.org/p/is-demos/'>
 <meta property='og:site_name' content='ThenKey'>
@@ -53,7 +53,6 @@
             let loaclc = localStorage.getItem('ColorTimestamp')
 
             if (loaclc === null) {
-                localStorage.setItem('ColorTimestamp', timestamp + 1000 * 60 * 60 * 12)
                 xys = true;
             }
             if (loaclc < timestamp) {
@@ -61,6 +60,7 @@
             }
             if (xys) {
                 localStorage.removeItem("StackColorScheme");
+                localStorage.setItem('ColorTimestamp', timestamp + 1000 * 60 * 60 * 12)
             }
 
         } catch (error) {
