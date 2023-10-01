@@ -53,8 +53,8 @@ This page&amp;rsquo;s frontmatter:
     
     window.addEventListener('beforeunload', function (event) {
         try {
-            let timestamp = Date.now();
-            let loaclc = localStorage.getItem('ColorTimestamp')
+            const timestamp = Date.now();
+            const loaclc = localStorage.getItem('ColorTimestamp')
 
             if (loaclc === null || loaclc < timestamp) {
                 localStorage.removeItem("StackColorScheme");
